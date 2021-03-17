@@ -1,6 +1,6 @@
 import sys
 
-REPLICAS=int(sys.argv[1])
+REPLICAS=int(sys.argv[1]) or 1
 
 Header="""version: "3"
 services:
@@ -21,7 +21,7 @@ Footer="""  redis:
     ports:
       - "8080:80"
     volumes:
-      - ./lb.conf:/etc/nginx/conf.d/default.conf
+      - ./lb.tmp.conf:/etc/nginx/conf.d/default.conf
 """
 finalString = Header
 for i in range(0,REPLICAS):
