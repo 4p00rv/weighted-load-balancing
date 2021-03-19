@@ -1,6 +1,8 @@
 import sys
 
-REPLICAS=int(sys.argv[1]) or 1
+REPLICAS = 1
+if len(sys.argv) > 1:
+   REPLICAS = int(sys.argv[1])
 
 Header="""version: "3"
 services:
