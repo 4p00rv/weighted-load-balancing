@@ -1,7 +1,10 @@
 FILE="temp-compose.yml"
-CONF="lb.tmp.conf"
+CONF="conf/lb.tmp.conf"
 
-run: generate_docker_compose generate_nginx_conf
+build:
+	docker-compose -f ${FILE} build
+
+run: generate_docker_compose generate_nginx_conf build 
 	docker-compose -f ${FILE} up -d
 
 generate_docker_compose:
@@ -12,3 +15,4 @@ generate_nginx_conf:
 
 clean:
 	docker-compose -f ${FILE} down
+	rm -rf ./conf ./temp-compose.yml
