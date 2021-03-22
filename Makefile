@@ -14,7 +14,7 @@ generate_nginx_conf:
 	mkdir -p conf && python ./scripts/generate_nginx_conf.py ${workers} > ${CONF}
 
 modify:
-	sed -i 's/\(server${server}:80 weight=\)[0-9]\+/\1${weight}/' ./conf/lb.tmp.conf
+	sed -i 's/\(server${worker}:80 weight=\)[0-9]\+/\1${weight}/' ./conf/lb.tmp.conf
 	docker-compose -f ${FILE} exec lb nginx -s reload
 
 clean:
