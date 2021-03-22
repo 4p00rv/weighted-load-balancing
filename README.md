@@ -29,19 +29,33 @@ Example:
 make run workers=4 # Starts 4 web workers
 ```
 
+### test
+
+Tests the load balancing by displaying the stats from the workers.
+
+Options:
+
+- `count`: The number of http requests to send.
+
+Example:
+
+```
+make test count=100 # Sends 100 http requests and displays the stats
+```
+
 ### modify
 
 Modifies the Load balancer config file and reloads the config in the container
 
 Options:
 
-- `server`: Server ID whose weight needs to be modified.
+- `worker`: Worker ID whose weight needs to be modified.
 - `weight`: The new weight.
 
 Example:
 
 ```
-make modify server=3 weight=100 # Sets server3 weight to 100
+make modify worker=3 weight=100 # Sets server3 weight to 100
 ```
 
 ### build
