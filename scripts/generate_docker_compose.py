@@ -10,6 +10,7 @@ services:
 
 Server="""  server%d:
     build: ./server
+    hostname: 'worker%d'
     environment:
       - PORT=80
     depends_on:
@@ -31,7 +32,7 @@ LB_dependency="""      - server%d
 """
 finalString = Header
 for i in range(0,REPLICAS):
-    finalString += Server % (i+1)
+    finalString += Server % (i+1, i+1)
 
 finalString += Footer
 
