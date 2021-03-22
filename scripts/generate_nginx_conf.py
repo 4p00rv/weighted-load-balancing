@@ -24,7 +24,7 @@ server {
 
 servers = ''
 for i in range(0,REPLICAS):
-    servers += Server % i
+    servers += Server % (i+1)
 
 finalString = (Upstream % servers) + Footer
 

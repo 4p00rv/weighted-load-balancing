@@ -31,12 +31,12 @@ LB_dependency="""      - server%d
 """
 finalString = Header
 for i in range(0,REPLICAS):
-    finalString += Server % i
+    finalString += Server % (i+1)
 
 finalString += Footer
 
 for i in range(0,REPLICAS):
-    finalString += LB_dependency % i
+    finalString += LB_dependency % (i+1)
 
 print(finalString)
 
