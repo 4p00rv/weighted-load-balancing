@@ -18,7 +18,7 @@ modify:
 	docker-compose -f ${FILE} exec lb nginx -s reload
 
 clean:
-	docker-compose -f ${FILE} --remove-orphans down
+	docker-compose -f ${FILE} down --remove-orphans
 	rm -rf ./conf ./temp-compose.yml
 
 test:
